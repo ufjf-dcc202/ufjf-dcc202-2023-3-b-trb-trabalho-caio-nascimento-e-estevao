@@ -31,7 +31,3 @@ function definirDadoTabela(tab, posJtab, jog) {
     }
     // retorna definiu verdadeiro se a coluna nao estiver cheia
 }
-
-jog1 = jogarDado(jog1);
-definirDadoTabela(tab1, 0, jog1);
-console.log(`${tab1[0][0]}`);
