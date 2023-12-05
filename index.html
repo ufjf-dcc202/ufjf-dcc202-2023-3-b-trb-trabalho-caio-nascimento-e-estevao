@@ -4,86 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Web</title>
-    <style>
-        *{
-            text-align: center;
-            margin: 0.2%;
-        }
-        .superior{
-            
-        }
-        input{
-            align-items: center;
-            background-color: darkgray;
-        }
-        div{
-            align-items: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="">
 </head>
-<body style="display: flex;">
+<body>
 
-    <aside style="width: 30vw; height: 100vh; margin: 0.5%;  background-color: black;"></aside>
+    <aside></aside>
+    <main>
 
-    <main style="height: 100vh; width: 40vw;">
-        <h1>Trabalho Web</h1>
+        <table class="tabela">
 
-        <section style="width: 100%; height: 50vh; background-color: red; display: flex; flex-direction: row;">
-            <article style="width: 33%; height: 100%; background-color: blue; display: flex; flex-direction: column;">
-                <div style="width: 100%; height: 33%; background-color: orange; align-items: center;"><input style="width: 80%; height: 80%; align-items: center;" id="tela" onclick="valor()" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: darkorchid; align-items: center;"><input style="width: 80%; height: 80%; align-items: center;" id="bot1x2" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="bot1x3" type="number" disabled placeholder=" "></div>
-            </article>
-            <article style="width: 33%; height: 100%; background-color: magenta; display: flex; flex-direction: column">
-                <div style="width: 100%; height: 33%; background-color: orange;"><input style="width: 80%; height: 80%; align-items: center;" id="bot2x1" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: darkorchid;"><input style="width: 80%; height: 80%; align-items: center;" id="bot2x2" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="bot2x3" type="number" disabled placeholder=" "></div>
-            </article>
-            <article style="width: 33%; height: 100%; background-color: purple; display: flex; flex-direction: column">
-                <div class="fundo" style="width: 100%; height: 33%; background-color: orange;"><input style="width: 80%; height: 80%; align-items: center;" id="bot3x1" type="number" disabled placeholder=" "></div>
-                <div class="fundo" style="width: 100%; height: 33%; background-color: darkorchid;"><input style="width: 80%; height: 80%; align-items: center;" id="bot3x2" type="number" disabled placeholder=" "></div>
-                <div class="fundo" style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="bot3x3" type="number" disabled placeholder=" "></div>
-            </article>
-        
-        </section>
-        <section style="width: 100%; height: 50vh; background-color: green; display: flex; flex-direction: row;">
-            <article style="width: 33%; height: 100%; background-color: gray; display: flex; flex-direction: column">
-                <div class="superior" style="width: 100%; height: 33%; background-color: orange;"><input style="width: 80%; height: 80%; align-items: center;" id="jog1x1" type="number" disabled placeholder=" "></div>
-                <div class="superior" style="width: 100%; height: 33%; background-color: darkorchid;"><input style="width: 80%; height: 80%; align-items: center;" id="jog1x2" type="number" disabled placeholder=" "></div>
-                <div class="superior" style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="jog1x3" type="number" disabled placeholder=" "></div>
-            </article>
-            <article style="width: 33%; height: 100%; background-color: yellow; display: flex; flex-direction: column">
-                <div style="width: 100%; height: 33%; background-color: orange;"><input style="width: 80%; height: 80%; align-items: center;" id="jog2x1" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: darkorchid;"><input style="width: 80%; height: 80%; align-items: center;" id="jog2x2" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="jog2x3" type="number" disabled placeholder=" "></div>
-            </article>
-            <article style="width: 33%; height: 100%; background-color: moccasin; display: flex; flex-direction: column">
-                <div style="width: 100%; height: 33%; background-color: orange;"><input style="width: 80%; height: 80%; align-items: center;" id="jog3x1" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: darkorchid;"><input style="width: 80%; height: 80%; align-items: center;" id="jog3x2" type="number" disabled placeholder=" "></div>
-                <div style="width: 100%; height: 33%; background-color: lightcoral;"><input style="width: 80%; height: 80%; align-items: center;" id="jog3x3" type="number" disabled placeholder=" "></div>
-            </article>
-        </section>
+            <tbody>
 
+                <tr>
+
+                    <td id="bot1x1" onclick="valor('bot1x1')">
+
+                    </td>
+                    <td id="bot1x2" onclick="valor('bot1x2')">
+
+                    </td>
+                    <td id="bot1x3" onclick="valor('bot1x3')">
+                        
+                    </td>
+                </tr>
+                <tr>
+
+                    <td id="bot2x1" onclick="valor('bot2x1')">
+
+                    </td>
+                    <td id="bot2x2" onclick="valor('bot2x2')">
+
+                    </td>
+                    <td id="bot2x3" onclick="valor('bot2x3')">
+                        
+                    </td>
+                </tr>
+                <tr>
+
+                    <td id="bot3x1" onclick="valor('bot3x1')">
+
+                    </td>
+                    <td id="bot3x2" onclick="valor('bot3x2')">
+
+                    </td>
+                    <td id="bot3x3" onclick="valor('bot3x3')">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="tabela">
+
+            <tbody>
+
+                <tr>
+
+                    <td id="jog1x1" onclick="valor('jog1x1')">
+
+                    </td>
+                    <td id="jog1x2" onclick="valor('jog1x2')">
+
+                    </td>
+                    <td id="jog1x3" onclick="valor('jog1x3')">
+                        
+                    </td>
+                </tr>
+                <tr>
+
+                    <td id="jog2x1" onclick="valor('jog2x1')">
+
+                    </td>
+                    <td id="jog2x2" onclick="valor('jog2x2')">
+
+                    </td>
+                    <td id="jog2x3" onclick="valor('jog2x3')">
+                        
+                    </td>
+                </tr>
+                <tr>
+
+                    <td id="jog3x1" onclick="valor('jog3x1')">
+
+                    </td>
+                    <td id="jog3x2" onclick="valor('jog3x2')">
+
+                    </td>
+                    <td id="jog3x3" onclick="valor('jog3x3')">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </main>
-
-    <aside style="width: 30vw; height: 100vh; margin: 0.5%; background-color: black;"></aside>
+    <aside></aside>
     
+    <script>
+        function valor(id) {
+            let dado = Math.floor(Math.random() * 6) + 1;
+            console.log(id)
+
+           document.getElementById(id).innerText = dado
+
+        }
+    </script>
 </body>
-
-<script>
-
-
-    function valor() {
-
-        let dado = Math.floor(Math.random(1, 6))
-        //Pega o botão que foi clicado e armazena na variável
-        //document.getElementById('tela').value += num
-
-        //Insere na tela um numero na frente do outro
-        console.log(document.getElementById('tela').value += dado)
-
-    }
-
-</script>
-
 </html>
