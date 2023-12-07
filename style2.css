@@ -6,11 +6,24 @@ body {
     height: 100vh;
 
 }
-aside{
-    display: grid;
+#aside1{
+    display: flex;
+    flex-direction: column-reverse;
     height: 100%;
     width: 100%;
+    align-items: center;
+    padding: 5px;
 }
+
+#aside2{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+}
+
 main {
     width: 100%;
     height: 100%;
@@ -19,6 +32,49 @@ main {
     align-items: center;
     flex-direction: column;
 
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    font-family: cursive;
+    font-size: xx-large;
+}
+
+#inicio {
+    width: 90%;
+    height: 40%;
+    background-color: white;
+    margin-bottom: 10%;
+    border: 2px red solid;
+    text-align: center;
+}
+
+#fim {
+    width: 90%;
+    height: 40%;
+    background-color: white;
+    margin-bottom: 10%;
+    border: 2px red solid;
+    text-align: center;
+}
+
+#jog {
+    width: 90%;
+    height: 40%;
+    background-color: white;
+    margin-bottom: 10%;
+    border: 2px red solid;
+    text-align: center;
+}
+
+#bot {
+    width: 90%;
+    height: 40%;
+    background-color: white;
+    margin-bottom: 10%;
+    border: 2px red solid;
+    text-align: center;
 }
 
 .tabela{
@@ -32,4 +88,5 @@ main {
     width: 25%;
     height: 25%;
     border: 2px red solid;
+    text-align: center;
 }
