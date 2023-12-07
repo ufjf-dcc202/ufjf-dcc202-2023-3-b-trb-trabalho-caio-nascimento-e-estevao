@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Web</title>
     <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="main.js">
 </head>
 <body>
 
-    <aside></aside>
+    
+
+    <aside id="aside1">
+
+        <section id="jog">
+
+
+        </section>
+
+        <section id="inicio">
+
+            <button onclick="Jog()">Jogar</button>
+        </section>
+    </aside>
     <main>
 
         <table class="tabela">
@@ -18,37 +31,37 @@
 
                 <tr>
 
-                    <td id="bot1x1" onclick="valor('bot1x1')">
+                    <td id="bot1x1" onclick="valorBot('bot1x1', bot1x1)">
 
                     </td>
-                    <td id="bot1x2" onclick="valor('bot1x2')">
+                    <td id="bot1x2" onclick="valorBot('bot1x2', bot1x2)">
 
                     </td>
-                    <td id="bot1x3" onclick="valor('bot1x3')">
+                    <td id="bot1x3" onclick="valorBot('bot1x3', bot1x3)">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="bot2x1" onclick="valor('bot2x1')">
+                    <td id="bot2x1" onclick="valorBot('bot2x1', bot2x1)">
 
                     </td>
-                    <td id="bot2x2" onclick="valor('bot2x2')">
+                    <td id="bot2x2" onclick="valorBot('bot2x2', bot2x2)">
 
                     </td>
-                    <td id="bot2x3" onclick="valor('bot2x3')">
+                    <td id="bot2x3" onclick="valorBot('bot2x3', bot2x3)">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="bot3x1" onclick="valor('bot3x1')">
+                    <td id="bot3x1" onclick="valorBot('bot3x1', bot3x1)">
 
                     </td>
-                    <td id="bot3x2" onclick="valor('bot3x2')">
+                    <td id="bot3x2" onclick="valorBot('bot3x2', bot3x2)">
 
                     </td>
-                    <td id="bot3x3" onclick="valor('bot3x3')">
+                    <td id="bot3x3" onclick="valorBot('bot3x3', bot3x3)">
 
                     </td>
                 </tr>
@@ -61,53 +74,270 @@
 
                 <tr>
 
-                    <td id="jog1x1" onclick="valor('jog1x1')">
+                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)">
 
                     </td>
-                    <td id="jog1x2" onclick="valor('jog1x2')">
+                    <td id="jog1x2" onclick="valorJog('jog1x2', jogAux)">
 
                     </td>
-                    <td id="jog1x3" onclick="valor('jog1x3')">
+                    <td id="jog1x3" onclick="valorJog('jog1x3', jogAux)">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="jog2x1" onclick="valor('jog2x1')">
+                    <td id="jog2x1" onclick="valorJog('jog2x1', jogAux)">
 
                     </td>
-                    <td id="jog2x2" onclick="valor('jog2x2')">
+                    <td id="jog2x2" onclick="valorJog('jog2x2', jogAux)">
 
                     </td>
-                    <td id="jog2x3" onclick="valor('jog2x3')">
+                    <td id="jog2x3" onclick="valorJog('jog2x3', jogAux)">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="jog3x1" onclick="valor('jog3x1')">
+                    <td id="jog3x1" onclick="valorJog('jog3x1', jogAux)">
 
                     </td>
-                    <td id="jog3x2" onclick="valor('jog3x2')">
+                    <td id="jog3x2" onclick="valorJog('jog3x2', jogAux)">
 
                     </td>
-                    <td id="jog3x3" onclick="valor('jog3x3')">
+                    <td id="jog3x3" onclick="valorJog('jog3x3', jogAux)">
 
                     </td>
                 </tr>
             </tbody>
         </table>
     </main>
-    <aside></aside>
-    
+    <aside id="aside2">
+
+        <section id="bot">
+
+
+        </section>
+
+        <section id="fim">
+
+            <button onclick="Bot()">Jogar</button>
+        </section>
+    </aside>
+
     <script>
-        function valor(id) {
-            let dado = Math.floor(Math.random() * 6) + 1;
+
+        let bot1x1 = 0;
+        let bot1x2 = 0;
+        let bot1x3 = 0;
+        let bot2x1 = 0;
+        let bot2x2 = 0;
+        let bot2x3 = 0;
+        let bot3x1 = 0;
+        let bot3x2 = 0;
+        let bot3x3 = 0;
+
+        let jog1x1 = 0;
+        let jog1x2 = 0;
+        let jog1x3 = 0;
+        let jog2x1 = 0;
+        let jog2x2 = 0;
+        let jog2x3 = 0;
+        let jog3x1 = 0;
+        let jog3x2 = 0;
+        let jog3x3 = 0;
+
+        let botAux = 0;
+        let jogAux = 0;
+
+        function valorBot(id, dado) {
+
+            
+
+            if(id == 'bot1x1'){
+                
+                if (bot1x1 == 0){
+                    bot1x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot1x2'){
+
+                if (bot1x2 == 0){
+                    bot1x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot1x3'){
+
+                if (bot1x3 == 0){
+                    bot1x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot2x1'){
+
+                if (bot2x1 == 0){
+                    bot2x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot2x2'){
+
+                if (bot2x2 == 0){
+                    bot2x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot2x3'){
+
+                if (bot2x3 == 0){
+                    bot2x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot3x1'){
+
+                if (bot3x1 == 0){
+                    bot3x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'bot3x2'){
+
+                if (bot3x2 == 0){
+                    bot3x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if (id == 'bot3x3'){
+
+                if (bot3x3 == 0){
+                    bot3x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            };
+
+            
+
+
             console.log(id)
 
-           document.getElementById(id).innerText = dado
+            document.getElementById(id).innerText = dado;
+        }
 
+        function valorJog(id, dado) {
+
+            if(id == 'jog1x1'){
+                
+                if (jog1x1 == 0){
+                    jog1x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog1x2'){
+
+                if (jog1x2 == 0){
+                    jog1x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog1x3'){
+
+                if (jog1x3 == 0){
+                    jog1x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog2x1'){
+
+                if (jog2x1 == 0){
+                    jog2x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog2x2'){
+
+                if (jog2x2 == 0){
+                    jog2x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog2x3'){
+
+                if (jog2x3 == 0){
+                    jog2x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog3x1'){
+
+                if (jog3x1 == 0){
+                    jog3x1 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if(id == 'jog3x2'){
+
+                if (jog3x2 == 0){
+                    jog3x2 = dado;
+                }
+                else{
+                    return 0;
+                }
+            }
+            else if (id == 'jog3x3'){
+
+                if (jog3x3 == 0){
+                    jog3x3 = dado;
+                }
+                else{
+                    return 0;
+                }
+            };
+
+
+            console.log(id)
+
+            document.getElementById(id).innerText = dado
+        }
+
+        function Jog() {
+            jogAux = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('jog').innerText = jogAux
         }
     </script>
+    
 </body>
 </html>
