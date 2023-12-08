@@ -68,7 +68,7 @@
             </tbody>
         </table>
 
-        <table class="tabela">
+        <table class="tabela" onclick="Bot()">
 
             <tbody>
 
@@ -148,6 +148,9 @@
 
         let botAux = 0;
         let jogAux = 0;
+
+        let m1 = 0;
+        let m2 = 0;
 
         function valorBot(id, dado) {
 
@@ -343,16 +346,20 @@
             document.getElementById('bot').innerText = botAux
         }
 
-        function botIA() {
-            while(true){
-                let m1 = Math.floor(Math.random() * 3) + 1;
-                let m2 = Math.floor(Math.random() * 3) + 1;
+        function botIA(){
 
-                if(matriz[m1][m2] =! 0){
-                    continue;
+            let m1 = Math.floor(Math.random() * 3) + 1;
+            let m2 = Math.floor(Math.random() * 3) + 1;
+        }
+
+        function marcacaoBot(id) {
+            while(true){
+
+                if(matriz[m1][m2] == 0){
+                    valorBot(id, Bot());
                 }
                 else{
-                    
+
                 }
             }
         }
