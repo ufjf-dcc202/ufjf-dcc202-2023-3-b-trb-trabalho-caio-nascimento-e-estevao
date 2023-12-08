@@ -1,7 +1,4 @@
-let jog1 = 0;
-let jog2 = 0;
-let tab1 = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // dados do jogador 1 dentro da tabela
-let tab2 = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]; // dados do jogador 2 dentro da tabela
+
 
 function aleatorio1e6() {
     return Math.floor(Math.random() * 6) + 1;
@@ -31,3 +28,22 @@ function definirDadoTabela(tab, posJtab, jog) {
     }
     // retorna definiu verdadeiro se a coluna nao estiver cheia
 }
+
+function pontuacao(tab,posJtab)
+{
+    let pontos = 0;
+    for (let i = 0; i < 3; i++) {
+        let quant = tab[i][posJtab];
+        for (let i = 0; i < 3; i++){
+            let mult=0;
+            if (quant=tab[i][posJtab])
+            {
+                mult++;
+            }
+            pontos = pontos + quant*mult;
+        }
+    }
+    return pontos;
+}
+
+export {jogarDado,definirDadoTabela,pontuacao}
