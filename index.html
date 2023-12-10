@@ -279,11 +279,10 @@
                     return 0;
                 }
             };
-            console.log(id)
-
+            zerarJog();
             document.getElementById(id).innerText = dado;
             Bot();
-            zerarJog();
+            
             pontosBot();
             ganhaJog();
         }
@@ -371,11 +370,10 @@
                     return 0;
                 }
             };
-            console.log(id)
-            
+            zerarJog();
             document.getElementById(id).innerText = dado;
             Jog();
-            zerarJog();
+            
             pontosJog();
             ganhaJog();
         }
@@ -523,7 +521,6 @@
                     if (bot[i][j] !== 0) {
                         contBot++;
                     }
-                    console.log(contJog);
                 }
             }
             if ((contJog === 9) || (contBot === 9)) {
@@ -542,11 +539,20 @@
         }
 
         function zerarJog(){
-            for(i = 0; i < 3; i++){
-                for(j = 0; j < 3; j++){
-                    if(jog[i][0] == bot[j][0]){
-                        jog[i][0] = 0;
+            for(let i = 0; i < 3; i++){
+                let valorCom=jog[i][0];
+                for(let j = 0; j < 3; j++){
+                    if(valorCom == bot[j][0]){
+                        valorCom = 0;
                         bot[j][0] = 0;
+                        console.log(valorCom);
+                        console.log(bot[j][0]);
+                        let idDefinirJog = 'jog' + (i+1) + 'x1';
+                        let idDefinirBot = 'bot' + (j+1) + 'x1';
+                        console.log(idDefinirJog);
+                        console.log(idDefinirBot);
+                        document.getElementById(idDefinirJog).innerText = 0;
+                        document.getElementById(idDefinirBot).innerText = 0;
                     }
                 }
             }
