@@ -13,8 +13,15 @@
 
     <aside id="aside1">
 
-        <section id="jog">
-
+        <section id="jog" >
+            <div id="jog1"></div>
+            <div id="pontJog">
+                <div id="jr1"></div>
+                <div id="jr2"></div>
+                <div id="jr3"></div>
+                <div id="totalJog"></div>
+                
+            </div>
 
         </section>
 
@@ -74,7 +81,7 @@
 
                 <tr>
 
-                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)" onkeyup="Jog()">
+                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)" onclick="pontosJog()">
 
                     </td>
                     <td id="jog1x2" onclick="valorJog('jog1x2', jogAux)">
@@ -114,7 +121,13 @@
     <aside id="aside2">
 
         <section id="bot">
-
+                <div id="bot1"></div>
+                <div id="pontBot">
+                    <div id="br1"></div>
+                    <div id="br2"></div>
+                    <div id="br3"></div>
+                    <div id="totalBot"></div>
+                </div>
 
         </section>
 
@@ -152,21 +165,38 @@
             [(0, 0, 0)]
         ]
 
+        bot[0][0] = bot1x1;
+        bot[0][1] = bot1x2;
+        bot[0][2] = bot1x3;
+        bot[1][0] = bot2x1;
+        bot[1][1] = bot2x2;
+        bot[1][2] = bot2x3;
+        bot[2][0] = bot3x1;
+        bot[2][1] = bot3x2;
+        bot[2][2] = bot3x3;
+
         let jog = [
             [(0, 0, 0)],
             [(0, 0, 0)],
             [(0, 0, 0)]
         ]
 
+        jog[0][0] = jog1x1;
+        jog[0][1] = jog1x2;
+        jog[0][2] = jog1x3;
+        jog[1][0] = jog1x1;
+        jog[1][1] = jog1x2;
+        jog[1][2] = jog1x3;
+        jog[2][0] = jog1x1;
+        jog[2][1] = jog1x2;
+        jog[2][2] = jog1x3;
+
         let botAux = 0;
         let jogAux = 0;
 
-        let m1 = 0;
-        let m2 = 0;
+        let pontoJog = 0;
 
         function valorBot(id, dado) {
-
-            
 
             if(id == 'bot1x1'){
                 
@@ -253,6 +283,9 @@
 
             document.getElementById(id).innerText = dado;
             Bot();
+            zerarJog();
+            pontosBot();
+            ganhaJog();
         }
 
         function valorJog(id, dado) {
@@ -339,20 +372,185 @@
                 }
             };
             console.log(id)
+            
             document.getElementById(id).innerText = dado;
             Jog();
+            zerarJog();
+            pontosJog();
+            ganhaJog();
         }
 
         function Jog() {
             jogAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('jog').innerText = jogAux
+            document.getElementById('jog1').innerText = jogAux
         }
 
         function Bot() {
             botAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('bot').innerText = botAux
+            document.getElementById('bot1').innerText = botAux
         }
 
+
+        let pontoJog1 = 0;
+        let pontoJog2 = 0;
+        let pontoJog3 = 0;
+        function pontosJog(){
+
+            jog[0][0] = jog1x1;
+            jog[0][1] = jog1x2;
+            jog[0][2] = jog1x3;
+            jog[1][0] = jog2x1;
+            jog[1][1] = jog2x2;
+            jog[1][2] = jog2x3;
+            jog[2][0] = jog3x1;
+            jog[2][1] = jog3x2;
+            jog[2][2] = jog3x3;
+            
+            pontoJog1 = 0;
+            pontoJog2 = 0;
+            pontoJog3 = 0;
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = jog[i][0];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === jog[j][0]) {
+                        cont++;
+                    }
+                }
+                pontoJog1 = pontoJog1 + jog[i][0] * cont;
+            }
+                
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = jog[i][1];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === jog[j][1]) {
+                        cont++;
+                    }
+                }
+                pontoJog2 = pontoJog2 + jog[i][1] * cont;
+            }
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = jog[i][2];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === jog[j][2]) {
+                        cont++;
+                    }
+                }
+                pontoJog3 = pontoJog3 + jog[i][2] * cont;
+            }
+            document.getElementById('jr1').innerText = pontoJog1;
+            document.getElementById('jr2').innerText = pontoJog2;
+            document.getElementById('jr3').innerText = pontoJog3;
+            pontoJog=pontoJog1+pontoJog2+pontoJog3;
+            document.getElementById('totalJog').innerText = pontoJog;
+    
+        }
+
+        let pontoBot = 0;
+        let pontoBot1 = 0;
+        let pontoBot2 = 0;
+        let pontoBot3 = 0;
+
+        function pontosBot(){
+
+            bot[0][0] = bot1x1;
+            bot[0][1] = bot1x2;
+            bot[0][2] = bot1x3;
+            bot[1][0] = bot2x1;
+            bot[1][1] = bot2x2;
+            bot[1][2] = bot2x3;
+            bot[2][0] = bot3x1;
+            bot[2][1] = bot3x2;
+            bot[2][2] = bot3x3;
+
+            pontoBot = 0;
+            pontoBot1 = 0;
+            pontoBot2 = 0;
+            pontoBot3 = 0;
+            
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = bot[i][0];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === bot[j][0]) {
+                        cont++;
+                    }
+                }
+                pontoBot1 = pontoBot1 + bot[i][0] * cont;
+            }
+
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = bot[i][1];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === bot[j][1]) {
+                        cont++;
+                    }
+                }
+                pontoBot2 = pontoBot2 + bot[i][1] * cont;
+            }
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = bot[i][2];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === bot[j][2]) {
+                        cont++;
+                    }
+                }
+                pontoBot3 = pontoBot3 + bot[i][2] * cont;
+            }
+            document.getElementById('br1').innerText = pontoBot1;
+            document.getElementById('br2').innerText = pontoBot2;
+            document.getElementById('br3').innerText = pontoBot3;
+            pontoBot=pontoBot1+pontoBot2+pontoBot3;
+            document.getElementById('totalBot').innerText = pontoBot;
+        
+        }
+
+        let contJog = 0;
+        let contBot = 0;
+
+        function ganhaJog() {
+            contJog = 0;
+            contBot = 0;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (jog[i][j] !== 0) {
+                        contJog++;
+                    }
+                    if (bot[i][j] !== 0) {
+                        contBot++;
+                    }
+                    console.log(contJog);
+                }
+            }
+            if ((contJog === 9) || (contBot === 9)) {
+                jogPontVerif();
+            }
+        }
+
+        function jogPontVerif() {
+            if (pontoJog > pontoBot) {
+                alert("Jogador 1 Ganhou");
+            } else if (pontoJog < pontoBot) {
+                alert("Jogador 2 Ganhou");
+            } else {
+                alert("Empate");
+            }
+        }
+
+        function zerarJog(){
+            for(i = 0; i < 3; i++){
+                for(j = 0; j < 3; j++){
+                    if(jog[i][0] == bot[j][0]){
+                        jog[i][0] = 0;
+                        bot[j][0] = 0;
+                    }
+                }
+            }
+        }
     </script>
     
 </body>
