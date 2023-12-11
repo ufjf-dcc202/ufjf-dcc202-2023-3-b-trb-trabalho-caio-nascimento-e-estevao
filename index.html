@@ -170,6 +170,7 @@
             }
             let idPreencher = 'bot' + linha + 'x' + coluna;
             document.getElementById(idPreencher).innerText = dado;
+            zerarIguais(coluna-1);
             Bot();
             pontosBot();
             //configurar delay
@@ -186,6 +187,7 @@
             }
             let idPreencher = 'jog' + linha + 'x' + coluna;
             document.getElementById(idPreencher).innerText = dado;
+            zerarIguais(coluna-1);
             Jog();
             pontosJog();
             //configurar delay
@@ -323,22 +325,30 @@
             }
         }
 
-        function zerarJog(col){
+        function zerarIguais(col){
             for (let i=0;i<3;i++){
-                    if (jog[i][col] !== 0 && (jog[i][col] == bot[i][col])){
+                for (let j=0;j<3;j++){
+                    if (jog[i][col] !== 0 && (jog[i][col] == bot[j][col])){
+                        valorComp = jog[i][col];
                         for (let k=0;k<3;k++){
                             for (let l=0;l<3;l++){
-                                jog[k][l] = 0;
-                                bot[k][l] = 0;
-                                let idJog = 'jog'+(k+1)+'x'+(l+1);
-                                let idBot = 'bot'+(k+1)+'x'+(l+1);
-                                document.getElementById(idJog).innerText = '';
-                                document.getElementById(idBot).innerText = '';
+                                if (jog[k][l] == valorComp){
+                                    jog[k][l] = 0;
+                                    let idJogApagar = 'jog'+(k+1)+'x'+(l+1);
+                                    document.getElementById(idJogApagar).innerText = '';
+                                }
+                                if (bot[k][l] == valorComp){
+                                    bot[k][l] = 0;
+                                    let idBotApagar = 'bot'+(k+1)+'x'+(l+1);
+                                    document.getElementById(idBotApagar).innerText = '';
+                                }
                             }
                         }
                     }
                 }
-        }
+            }
+        }        
+
     </script>
     
 </body>
