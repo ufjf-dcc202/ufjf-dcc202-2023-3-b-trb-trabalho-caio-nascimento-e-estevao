@@ -1,1 +1,9 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/DYWUa3PC)
+# Trabalho Final DCC202: Jogo Esbugalhado
+### Turma B
+
+## Criadores:
+-> Caio Nascimento Reis da Silva - Matrícula: 202335004
+
+-> Estêvão Barbosa Fiorilo da Rocha - Matricula: 202335030
+
+
