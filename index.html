@@ -38,7 +38,7 @@
 
                 <tr>
 
-                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux)">
+                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux), zerarJog()">
 
                     </td>
                     <td id="bot1x2" onclick="valorBot('bot1x2', botAux)">
@@ -279,7 +279,6 @@
                     return 0;
                 }
             };
-            zerarJog();
             document.getElementById(id).innerText = dado;
             Bot();
             
@@ -370,7 +369,6 @@
                     return 0;
                 }
             };
-            zerarJog();
             document.getElementById(id).innerText = dado;
             Jog();
             
@@ -539,22 +537,11 @@
         }
 
         function zerarJog(){
-            for(let i = 0; i < 3; i++){
-                let valorCom=jog[i][0];
-                for(let j = 0; j < 3; j++){
-                    if(valorCom == bot[j][0]){
-                        valorCom = 0;
-                        bot[j][0] = 0;
-                        console.log(valorCom);
-                        console.log(bot[j][0]);
-                        let idDefinirJog = 'jog' + (i+1) + 'x1';
-                        let idDefinirBot = 'bot' + (j+1) + 'x1';
-                        console.log(idDefinirJog);
-                        console.log(idDefinirBot);
-                        document.getElementById(idDefinirJog).innerText = 0;
-                        document.getElementById(idDefinirBot).innerText = 0;
-                    }
-                }
+            if(bot1x1 == jog1x1 && bot1x1 == jog2x1 && bot1x1 == jog3x1){
+                jog1x1 = 0;
+                jog2x1 = 0;
+                jog3x1 = 0;
+                document.getElementById('jog1x1') = 0;
             }
         }
     </script>
