@@ -300,23 +300,22 @@
                     if (jog[i][col] !== 0 && (jog[i][col] == bot[j][col])){
                         valorComp = jog[i][col];
                         for (let k=0;k<3;k++){
-                            for (let l=0;l<3;l++){
-                                if (jog[k][l] == valorComp){
-                                    jog[k][l] = 0;
-                                    let idJogApagar = 'jog'+(k+1)+'x'+(l+1);
-                                    document.getElementById(idJogApagar).innerText = '';
-                                }
-                                if (bot[k][l] == valorComp){
-                                    bot[k][l] = 0;
-                                    let idBotApagar = 'bot'+(k+1)+'x'+(l+1);
-                                    document.getElementById(idBotApagar).innerText = '';
-                                }
+                            if (jog[k][col] == valorComp){
+                                jog[k][col] = 0;
+                                let idJogApagar = 'jog'+(k+1)+'x'+(col+1);
+                                document.getElementById(idJogApagar).innerText = '';
+                            }
+                            if (bot[k][col] == valorComp){
+                                bot[k][col] = 0;
+                                let idBotApagar = 'bot'+(k+1)+'x'+(col+1);
+                                document.getElementById(idBotApagar).innerText = '';
                             }
                         }
                     }
                 }
             }
-        }        
+        }
+            
 
     </script>
     
