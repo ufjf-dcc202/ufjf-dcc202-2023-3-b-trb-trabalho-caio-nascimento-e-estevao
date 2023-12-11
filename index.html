@@ -157,8 +157,20 @@
         let pontoJog1 = 0;
         let pontoJog2 = 0;
         let pontoJog3 = 0;
-        let contJog = 0;
-        let contBot = 0;
+        let pontoBot = 0;
+        let pontoBot1 = 0;
+        let pontoBot2 = 0;
+        let pontoBot3 = 0;
+
+        function Jog() {
+            jogAux = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('jog1').innerText = jogAux
+        }
+
+        function Bot() {
+            botAux = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('bot1').innerText = botAux
+        }
 
         function valorBot(id, dado) {
             let linha = id.charAt(3);
@@ -172,7 +184,7 @@
             document.getElementById(idPreencher).innerText = dado;
             zerarIguais(coluna-1);
             Bot();
-            pontosBot();
+            CalcPontosBot();
             //configurar delay
             ganhaJog();
         }
@@ -189,117 +201,74 @@
             document.getElementById(idPreencher).innerText = dado;
             zerarIguais(coluna-1);
             Jog();
-            pontosJog();
+            CalcPontosJog();
             //configurar delay
             ganhaJog();
         }
 
-        function Jog() {
-            jogAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('jog1').innerText = jogAux
-        }
 
-        function Bot() {
-            botAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('bot1').innerText = botAux
-        }
-
-
-        
-        function pontosJog(){
-            pontoJog1 = 0;
-            pontoJog2 = 0;
-            pontoJog3 = 0;
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = jog[i][0];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === jog[j][0]) {
-                        cont++;
-                    }
-                }
-                pontoJog1 = pontoJog1 + jog[i][0] * cont;
-            }
-                
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = jog[i][1];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === jog[j][1]) {
-                        cont++;
-                    }
-                }
-                pontoJog2 = pontoJog2 + jog[i][1] * cont;
-            }
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = jog[i][2];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === jog[j][2]) {
-                        cont++;
-                    }
-                }
-                pontoJog3 = pontoJog3 + jog[i][2] * cont;
-            }
-            document.getElementById('jr1').innerText = pontoJog1;
-            document.getElementById('jr2').innerText = pontoJog2;
-            document.getElementById('jr3').innerText = pontoJog3;
+        function CalcPontosJog()
+        {
+            pontoJog1=pontosJog(0);
+            pontoJog2=pontosJog(1);
+            pontoJog3=pontosJog(2);
             pontoJog=pontoJog1+pontoJog2+pontoJog3;
             document.getElementById('totalJog').innerText = pontoJog;
-    
+        }
+        
+        function pontosJog(col){
+            let pontoJogCol = 0;
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = jog[i][col];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === jog[j][col]) {
+                        cont++;
+                    }
+                }
+                pontoJogCol = pontoJogCol + jog[i][col] * cont;
+            }
+            if (pontoJogCol == 0){
+                return 0;
+            }
+            let idPreencher = 'jr' + (col+1);
+            document.getElementById(idPreencher).innerText = pontoJogCol;
+            return pontoJogCol;    
         }
 
 
-        function pontosBot(){
-
-            pontoBot = 0;
-            pontoBot1 = 0;
-            pontoBot2 = 0;
-            pontoBot3 = 0;
-            
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = bot[i][0];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === bot[j][0]) {
-                        cont++;
-                    }
-                }
-                pontoBot1 = pontoBot1 + bot[i][0] * cont;
-            }
-
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = bot[i][1];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === bot[j][1]) {
-                        cont++;
-                    }
-                }
-                pontoBot2 = pontoBot2 + bot[i][1] * cont;
-            }
-            for (let i = 0; i < 3; i++) {
-                let valorrepetido = bot[i][2];
-                let cont = 0;
-                for (let j = 0; j < 3; j++) {
-                    if (valorrepetido === bot[j][2]) {
-                        cont++;
-                    }
-                }
-                pontoBot3 = pontoBot3 + bot[i][2] * cont;
-            }
-            document.getElementById('br1').innerText = pontoBot1;
-            document.getElementById('br2').innerText = pontoBot2;
-            document.getElementById('br3').innerText = pontoBot3;
+        function CalcPontosBot()
+        {
+            pontoBot1=pontosBot(0);
+            pontoBot2=pontosBot(1);
+            pontoBot3=pontosBot(2);
             pontoBot=pontoBot1+pontoBot2+pontoBot3;
             document.getElementById('totalBot').innerText = pontoBot;
+        }
         
+        function pontosBot(col){
+            let pontoBotCol = 0;
+            for (let i = 0; i < 3; i++) {
+                let valorrepetido = bot[i][col];
+                let cont = 0;
+                for (let j = 0; j < 3; j++) {
+                    if (valorrepetido === bot[j][col]) {
+                        cont++;
+                    }
+                }
+                pontoBotCol = pontoBotCol + bot[i][col] * cont;
+            }
+            if (pontoBotCol == 0){
+                return 0;
+            }
+            let idPreencher = 'br' + (col+1);
+            document.getElementById(idPreencher).innerText = pontoBotCol;
+            return pontoBotCol;    
         }
 
-
         function ganhaJog() {
-            contJog = 0;
-            contBot = 0;
+            let contJog = 0;
+            let contBot = 0;
             for (let i = 0; i < 3; i++) {
                 for (let j = 0; j < 3; j++) {
                     if (jog[i][j] !== 0) {
