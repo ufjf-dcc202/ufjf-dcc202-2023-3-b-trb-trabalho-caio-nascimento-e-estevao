@@ -185,7 +185,6 @@
             zerarIguais(coluna-1);
             Bot();
             CalcPontosBot();
-            //configurar delay
             ganhaJog();
         }
 
@@ -202,7 +201,6 @@
             zerarIguais(coluna-1);
             Jog();
             CalcPontosJog();
-            //configurar delay
             ganhaJog();
         }
 
@@ -280,7 +278,9 @@
                 }
             }
             if ((contJog === 9) || (contBot === 9)) {
-                jogPontVerif();
+                setTimeout(function() {
+                    jogPontVerif();
+                }, 500);
             }
         }
 
