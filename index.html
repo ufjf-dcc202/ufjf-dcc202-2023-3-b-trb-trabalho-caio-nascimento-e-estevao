@@ -153,8 +153,12 @@
 
         let botAux = 0;
         let jogAux = 0;
-
         let pontoJog = 0;
+        let pontoJog1 = 0;
+        let pontoJog2 = 0;
+        let pontoJog3 = 0;
+        let contJog = 0;
+        let contBot = 0;
 
         function valorBot(id, dado) {
             let linha = id.charAt(3);
@@ -199,9 +203,7 @@
         }
 
 
-        let pontoJog1 = 0;
-        let pontoJog2 = 0;
-        let pontoJog3 = 0;
+        
         function pontosJog(){
             pontoJog1 = 0;
             pontoJog2 = 0;
@@ -245,10 +247,6 @@
     
         }
 
-        let pontoBot = 0;
-        let pontoBot1 = 0;
-        let pontoBot2 = 0;
-        let pontoBot3 = 0;
 
         function pontosBot(){
 
@@ -296,8 +294,6 @@
         
         }
 
-        let contJog = 0;
-        let contBot = 0;
 
         function ganhaJog() {
             contJog = 0;
@@ -329,7 +325,6 @@
 
         function zerarJog(col){
             for (let i=0;i<3;i++){
-                
                     if (jog[i][col] !== 0 && (jog[i][col] == bot[i][col])){
                         for (let k=0;k<3;k++){
                             for (let l=0;l<3;l++){
