@@ -1,4 +1,5 @@
-
+//MAIN JS NAO FOI USADO POR FALTA DE TEMPO
+//CODIGO SE ENCONTRA NO HTML
 
 import { jogarDado, definirDadoTabela } from "/src/DefinirDados.js";
 let jogdado = 0;
