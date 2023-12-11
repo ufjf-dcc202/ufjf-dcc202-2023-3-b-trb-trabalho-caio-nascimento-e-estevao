@@ -37,7 +37,7 @@
 
                 <tr>
 
-                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux), zerarJog()">
+                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux)">
 
                     </td>
                     <td id="bot1x2" onclick="valorBot('bot1x2', botAux)">
@@ -80,7 +80,7 @@
 
                 <tr>
 
-                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)" onclick="pontosJog()">
+                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)">
 
                     </td>
                     <td id="jog1x2" onclick="valorJog('jog1x2', jogAux)">
@@ -138,57 +138,18 @@
 
     <script>
 
-        let bot1x1 = 0;
-        let bot1x2 = 0;
-        let bot1x3 = 0;
-        let bot2x1 = 0;
-        let bot2x2 = 0;
-        let bot2x3 = 0;
-        let bot3x1 = 0;
-        let bot3x2 = 0;
-        let bot3x3 = 0;
-
-        let jog1x1 = 0;
-        let jog1x2 = 0;
-        let jog1x3 = 0;
-        let jog2x1 = 0;
-        let jog2x2 = 0;
-        let jog2x3 = 0;
-        let jog3x1 = 0;
-        let jog3x2 = 0;
-        let jog3x3 = 0;
-
         let bot = [
-            [(0, 0, 0)],
-            [(0, 0, 0)],
-            [(0, 0, 0)]
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
         ]
 
-        bot[0][0] = bot1x1;
-        bot[0][1] = bot1x2;
-        bot[0][2] = bot1x3;
-        bot[1][0] = bot2x1;
-        bot[1][1] = bot2x2;
-        bot[1][2] = bot2x3;
-        bot[2][0] = bot3x1;
-        bot[2][1] = bot3x2;
-        bot[2][2] = bot3x3;
 
         let jog = [
-            [(0, 0, 0)],
-            [(0, 0, 0)],
-            [(0, 0, 0)]
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
         ]
-
-        jog[0][0] = jog1x1;
-        jog[0][1] = jog1x2;
-        jog[0][2] = jog1x3;
-        jog[1][0] = jog1x1;
-        jog[1][1] = jog1x2;
-        jog[1][2] = jog1x3;
-        jog[2][0] = jog1x1;
-        jog[2][1] = jog1x2;
-        jog[2][2] = jog1x3;
 
         let botAux = 0;
         let jogAux = 0;
@@ -196,182 +157,34 @@
         let pontoJog = 0;
 
         function valorBot(id, dado) {
-
-            if(id == 'bot1x1'){
-                
-                if (bot1x1 == 0){
-                    bot1x1 = dado;
-                }
-                else{
-                    return 0;
-                }
+            let linha = id.charAt(3);
+            let coluna = id.charAt(5);
+            if (bot[linha - 1][coluna - 1] == 0) {
+                bot[linha - 1][coluna - 1] = dado;
+            } else {
+                return 0;
             }
-            else if(id == 'bot1x2'){
-
-                if (bot1x2 == 0){
-                    bot1x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot1x3'){
-
-                if (bot1x3 == 0){
-                    bot1x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot2x1'){
-
-                if (bot2x1 == 0){
-                    bot2x1 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot2x2'){
-
-                if (bot2x2 == 0){
-                    bot2x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot2x3'){
-
-                if (bot2x3 == 0){
-                    bot2x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot3x1'){
-
-                if (bot3x1 == 0){
-                    bot3x1 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'bot3x2'){
-
-                if (bot3x2 == 0){
-                    bot3x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if (id == 'bot3x3'){
-
-                if (bot3x3 == 0){
-                    bot3x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            };
-            document.getElementById(id).innerText = dado;
+            let idPreencher = 'bot' + linha + 'x' + coluna;
+            document.getElementById(idPreencher).innerText = dado;
             Bot();
-            
             pontosBot();
+            //configurar delay
             ganhaJog();
         }
 
         function valorJog(id, dado) {
-
-            if(id == 'jog1x1'){
-                
-                if (jog1x1 == 0){
-                    jog1x1 = dado;
-                }
-                else{
-                    return 0;
-                }
+            let linha = id.charAt(3);
+            let coluna = id.charAt(5);
+            if (jog[linha - 1][coluna - 1] == 0) {
+                jog[linha - 1][coluna - 1] = dado;
+            } else {
+                return 0;
             }
-            else if(id == 'jog1x2'){
-
-                if (jog1x2 == 0){
-                    jog1x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog1x3'){
-
-                if (jog1x3 == 0){
-                    jog1x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog2x1'){
-
-                if (jog2x1 == 0){
-                    jog2x1 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog2x2'){
-
-                if (jog2x2 == 0){
-                    jog2x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog2x3'){
-
-                if (jog2x3 == 0){
-                    jog2x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog3x1'){
-
-                if (jog3x1 == 0){
-                    jog3x1 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if(id == 'jog3x2'){
-
-                if (jog3x2 == 0){
-                    jog3x2 = dado;
-                }
-                else{
-                    return 0;
-                }
-            }
-            else if (id == 'jog3x3'){
-
-                if (jog3x3 == 0){
-                    jog3x3 = dado;
-                }
-                else{
-                    return 0;
-                }
-            };
-            document.getElementById(id).innerText = dado;
+            let idPreencher = 'jog' + linha + 'x' + coluna;
+            document.getElementById(idPreencher).innerText = dado;
             Jog();
-            
             pontosJog();
+            //configurar delay
             ganhaJog();
         }
 
@@ -390,17 +203,6 @@
         let pontoJog2 = 0;
         let pontoJog3 = 0;
         function pontosJog(){
-
-            jog[0][0] = jog1x1;
-            jog[0][1] = jog1x2;
-            jog[0][2] = jog1x3;
-            jog[1][0] = jog2x1;
-            jog[1][1] = jog2x2;
-            jog[1][2] = jog2x3;
-            jog[2][0] = jog3x1;
-            jog[2][1] = jog3x2;
-            jog[2][2] = jog3x3;
-            
             pontoJog1 = 0;
             pontoJog2 = 0;
             pontoJog3 = 0;
@@ -449,16 +251,6 @@
         let pontoBot3 = 0;
 
         function pontosBot(){
-
-            bot[0][0] = bot1x1;
-            bot[0][1] = bot1x2;
-            bot[0][2] = bot1x3;
-            bot[1][0] = bot2x1;
-            bot[1][1] = bot2x2;
-            bot[1][2] = bot2x3;
-            bot[2][0] = bot3x1;
-            bot[2][1] = bot3x2;
-            bot[2][2] = bot3x3;
 
             pontoBot = 0;
             pontoBot1 = 0;
@@ -535,13 +327,22 @@
             }
         }
 
-        function zerarJog(){
-            if(bot1x1 == jog1x1 && bot1x1 == jog2x1 && bot1x1 == jog3x1){
-                jog1x1 = 0;
-                jog2x1 = 0;
-                jog3x1 = 0;
-                document.getElementById('jog1x1') = 0;
-            }
+        function zerarJog(col){
+            for (let i=0;i<3;i++){
+                
+                    if (jog[i][col] !== 0 && (jog[i][col] == bot[i][col])){
+                        for (let k=0;k<3;k++){
+                            for (let l=0;l<3;l++){
+                                jog[k][l] = 0;
+                                bot[k][l] = 0;
+                                let idJog = 'jog'+(k+1)+'x'+(l+1);
+                                let idBot = 'bot'+(k+1)+'x'+(l+1);
+                                document.getElementById(idJog).innerText = '';
+                                document.getElementById(idBot).innerText = '';
+                            }
+                        }
+                    }
+                }
         }
     </script>
     
