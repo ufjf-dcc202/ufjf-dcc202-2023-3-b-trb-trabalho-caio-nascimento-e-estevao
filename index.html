@@ -182,8 +182,7 @@
             } else {
                 return 0;
             }
-            let idPreencher = 'bot' + linha + 'x' + coluna;
-            document.getElementById(idPreencher).innerText = dado; //define o valor na tabela
+            document.getElementById(id).innerText = dado; //define o valor na tabela
             zerarIguais(coluna-1); //verifica se ha itens para ser zerados 
             Bot(); //aleatoriza o proximo dado
             CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
@@ -199,8 +198,7 @@
             } else {
                 return 0;
             }
-            let idPreencher = 'jog' + linha + 'x' + coluna;
-            document.getElementById(idPreencher).innerText = dado; //define o valor na tabela
+            document.getElementById(id).innerText = dado; //define o valor na tabela
             zerarIguais(coluna-1); //verifica se ha itens para ser zerados
             Jog(); //aleatoriza o proximo dado
             CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
