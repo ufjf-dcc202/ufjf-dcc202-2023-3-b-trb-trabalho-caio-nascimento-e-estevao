@@ -183,7 +183,7 @@
                 return 0;
             }
             document.getElementById(id).innerText = dado; //define o valor na tabela
-            zerarIguais(coluna-1); //verifica se ha itens para ser zerados 
+            zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
             Bot(); //aleatoriza o proximo dado
             CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
             ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
@@ -199,7 +199,7 @@
                 return 0;
             }
             document.getElementById(id).innerText = dado; //define o valor na tabela
-            zerarIguais(coluna-1); //verifica se ha itens para ser zerados
+            zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
             Jog(); //aleatoriza o proximo dado
             CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
             ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
@@ -304,7 +304,7 @@
             }
         }
 
-        function zerarIguais(col){
+        function zerarIguais(col,tipo){
             //percorre e busca se há valores iguais em uma coluna (valores diferentes de 0)
             for (let i=0;i<3;i++){
                 for (let j=0;j<3;j++){
@@ -315,14 +315,30 @@
                         //quando acharmos esses valores, zeramos-o na matriz e o apagamos da tabela
                         for (let k=0;k<3;k++){
                             if (jog[k][col] == valorComp){
-                                jog[k][col] = 0;
-                                let idJogApagar = 'jog'+(k+1)+'x'+(col+1);
-                                document.getElementById(idJogApagar).innerText = '';
+                                //aqui ele verifica o tipo e elimina apenas a coluna do oponente;
+                                if (tipo===jog)
+                                {
+                                    jog[k][col]=valorComp;
+                                }
+                                else
+                                {
+                                    jog[k][col] = 0;
+                                    let idJogApagar = 'jog'+(k+1)+'x'+(col+1);
+                                    document.getElementById(idJogApagar).innerText = '';
+                                }
                             }
                             if (bot[k][col] == valorComp){
-                                bot[k][col] = 0;
-                                let idBotApagar = 'bot'+(k+1)+'x'+(col+1);
-                                document.getElementById(idBotApagar).innerText = '';
+                                //aqui ele verifica o tipo e elimina apenas a coluna do oponente;
+                                if (tipo===bot)
+                                {
+                                    bot[k][col]=valorComp;
+                                }
+                                else
+                                {
+                                    bot[k][col] = 0;
+                                    let idBotApagar = 'bot'+(k+1)+'x'+(col+1);
+                                    document.getElementById(idBotApagar).innerText = '';
+                                }
                             }
                         }
                     }
