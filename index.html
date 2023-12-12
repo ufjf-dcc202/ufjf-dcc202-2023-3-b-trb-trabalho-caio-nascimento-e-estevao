@@ -12,7 +12,7 @@
 
     <aside id="aside1">
 
-        <section id="jog" >
+        <section id="jog" > <!--define a pontuacao do segundo player na tabela a esquerda-->
             <div id="jog1"></div>
             <div id="pontJog">
                 <div id="jr1"></div>
@@ -26,21 +26,21 @@
 
         <section id="inicio">
 
-            <button onclick="Jog()">Jogar</button>
+            <button onclick="Jog()">Jogar</button> <!--executa função de aleatorizar dado do player 1-->
         </section>
     </aside>
     <main>
 
-        <table class="tabela">
+        <table class="tabela"> <!--tabela do segundo player-->
 
             <tbody>
 
                 <tr>
 
-                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux)">
+                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux)"> <!--executa definicao e ciclo de jogo na tabela de cima-->
 
                     </td>
-                    <td id="bot1x2" onclick="valorBot('bot1x2', botAux)">
+                    <td id="bot1x2" onclick="valorBot('bot1x2', botAux)"> <!--ou seja, a tabela do segundo player-->
 
                     </td>
                     <td id="bot1x3" onclick="valorBot('bot1x3', botAux)">
@@ -74,16 +74,16 @@
             </tbody>
         </table>
 
-        <table class="tabela" onclick="Bot()">
+        <table class="tabela">  <!--tabela do primeiro player-->
 
             <tbody>
 
                 <tr>
 
-                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)">
+                    <td id="jog1x1" onclick="valorJog('jog1x1', jogAux)"> <!--executa definicao e ciclo de jogo na tabela de baixo-->
 
                     </td>
-                    <td id="jog1x2" onclick="valorJog('jog1x2', jogAux)">
+                    <td id="jog1x2" onclick="valorJog('jog1x2', jogAux)"> <!--ou seja, a tabela do primeiro player-->
 
                     </td>
                     <td id="jog1x3" onclick="valorJog('jog1x3', jogAux)">
@@ -119,7 +119,7 @@
     </main>
     <aside id="aside2">
 
-        <section id="bot">
+        <section id="bot"> <!--define a pontuacao do segundo player na tabela a direita-->
                 <div id="bot1"></div>
                 <div id="pontBot">
                     <div id="br1"></div>
@@ -132,12 +132,12 @@
 
         <section id="fim">
 
-            <button onclick="Bot()">Jogar</button>
+            <button onclick="Bot()">Jogar</button> <!--executa função de aleatorizar dado do player 2-->
         </section>
     </aside>
 
     <script>
-
+        //define as matrizes que vao guardar os valores dos dados
         let bot = [
             [0, 0, 0],
             [0, 0, 0],
@@ -150,9 +150,10 @@
             [0, 0, 0],
             [0, 0, 0]
         ]
-
+        //define as variaveis que vao guardar os valores dos dados
         let botAux = 0;
         let jogAux = 0;
+        //define as variaveis que vao guardar os pontos dos jogadores
         let pontoJog = 0;
         let pontoJog1 = 0;
         let pontoJog2 = 0;
@@ -162,17 +163,18 @@
         let pontoBot2 = 0;
         let pontoBot3 = 0;
 
-        function Jog() {
+        function Jog() { //funcao que define o valor do dado do player 1 aleatoriamente entre 1 e 6
             jogAux = Math.floor(Math.random() * 6) + 1;
             document.getElementById('jog1').innerText = jogAux
         }
 
-        function Bot() {
+        function Bot() { //funcao que define o valor do dado do player 2 aleatoriamente entre 1 e 6
             botAux = Math.floor(Math.random() * 6) + 1;
             document.getElementById('bot1').innerText = botAux
         }
 
-        function valorBot(id, dado) {
+        function valorBot(id, dado) { //ciclo de jogo em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
+            //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
             let linha = id.charAt(3);
             let coluna = id.charAt(5);
             if (bot[linha - 1][coluna - 1] == 0) {
@@ -181,14 +183,15 @@
                 return 0;
             }
             let idPreencher = 'bot' + linha + 'x' + coluna;
-            document.getElementById(idPreencher).innerText = dado;
-            zerarIguais(coluna-1);
-            Bot();
-            CalcPontosBot();
-            ganhaJog();
+            document.getElementById(idPreencher).innerText = dado; //define o valor na tabela
+            zerarIguais(coluna-1); //verifica se ha itens para ser zerados 
+            Bot(); //aleatoriza o proximo dado
+            CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
+            ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
         }
 
-        function valorJog(id, dado) {
+        function valorJog(id, dado) { //ciclo de jogo em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
+            //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
             let linha = id.charAt(3);
             let coluna = id.charAt(5);
             if (jog[linha - 1][coluna - 1] == 0) {
@@ -197,25 +200,28 @@
                 return 0;
             }
             let idPreencher = 'jog' + linha + 'x' + coluna;
-            document.getElementById(idPreencher).innerText = dado;
-            zerarIguais(coluna-1);
-            Jog();
-            CalcPontosJog();
-            ganhaJog();
+            document.getElementById(idPreencher).innerText = dado; //define o valor na tabela
+            zerarIguais(coluna-1); //verifica se ha itens para ser zerados
+            Jog(); //aleatoriza o proximo dado
+            CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
+            ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
         }
 
 
         function CalcPontosJog()
         {
-            pontoJog1=pontosJog(0);
+            //calcula os pontos de cada coluna do jogador 1 e os atualiza
+            pontoJog1=pontosJog(0); 
             pontoJog2=pontosJog(1);
             pontoJog3=pontosJog(2);
-            pontoJog=pontoJog1+pontoJog2+pontoJog3;
+            pontoJog=pontoJog1+pontoJog2+pontoJog3; //calcula a pontuação total do jogador 1 e as atualiza
             document.getElementById('totalJog').innerText = pontoJog;
         }
         
         function pontosJog(col){
             let pontoJogCol = 0;
+            //percorre a coluna e verifica se há itens repetidos
+            //desse modo, a soma é feita corretamente na variavel definida no inicio da função
             for (let i = 0; i < 3; i++) {
                 let valorrepetido = jog[i][col];
                 let cont = 0;
@@ -227,24 +233,27 @@
                 pontoJogCol = pontoJogCol + jog[i][col] * cont;
             }
             if (pontoJogCol == 0){
-                return 0;
+                return 0; // retorna 0 se não há pontos somados e nao define nada na tabela de resultados na página
             }
             let idPreencher = 'jr' + (col+1);
-            document.getElementById(idPreencher).innerText = pontoJogCol;
-            return pontoJogCol;    
+            document.getElementById(idPreencher).innerText = pontoJogCol; // define a pontuação na coluna correta
+            return pontoJogCol; //retorna a pontuação da coluna calculada
         }
 
 
         function CalcPontosBot()
         {
+            //calcula os pontos de cada coluna do jogador 2 e os atualiza
             pontoBot1=pontosBot(0);
             pontoBot2=pontosBot(1);
             pontoBot3=pontosBot(2);
-            pontoBot=pontoBot1+pontoBot2+pontoBot3;
+            pontoBot=pontoBot1+pontoBot2+pontoBot3; //calcula a pontuação total do jogador 2 e as atualiza  
             document.getElementById('totalBot').innerText = pontoBot;
         }
         
         function pontosBot(col){
+            //percorre a coluna e verifica se há itens repetidos
+            //desse modo, a soma é feita corretamente na variavel definida no inicio da função
             let pontoBotCol = 0;
             for (let i = 0; i < 3; i++) {
                 let valorrepetido = bot[i][col];
@@ -257,14 +266,15 @@
                 pontoBotCol = pontoBotCol + bot[i][col] * cont;
             }
             if (pontoBotCol == 0){
-                return 0;
+                return 0; // retorna 0 se não há pontos somados e nao define nada na tabela de resultados na página
             }
             let idPreencher = 'br' + (col+1);
-            document.getElementById(idPreencher).innerText = pontoBotCol;
-            return pontoBotCol;    
+            document.getElementById(idPreencher).innerText = pontoBotCol; // define a pontuação na coluna correta
+            return pontoBotCol; // retorna a pontuação da coluna calculada
         }
 
         function ganhaJog() {
+            //faz a contagem de quantos itens estão na tabela
             let contJog = 0;
             let contBot = 0;
             for (let i = 0; i < 3; i++) {
@@ -278,13 +288,15 @@
                 }
             }
             if ((contJog === 9) || (contBot === 9)) {
-                setTimeout(function() {
+                //se uma tabela estiver cheia o jogo finaliza e é verificado quem ganhou
+                setTimeout(function() { // aqui há um delay para que a página atualize as pontuações antes de verificar quem ganhou
                     jogPontVerif();
                 }, 500);
             }
         }
 
         function jogPontVerif() {
+            //verifica quem ganhou e avisa na tela
             if (pontoJog > pontoBot) {
                 alert("Jogador 1 Ganhou");
             } else if (pontoJog < pontoBot) {
@@ -295,10 +307,14 @@
         }
 
         function zerarIguais(col){
+            //percorre e busca se há valores iguais em uma coluna (valores diferentes de 0)
             for (let i=0;i<3;i++){
                 for (let j=0;j<3;j++){
                     if (jog[i][col] !== 0 && (jog[i][col] == bot[j][col])){
                         valorComp = jog[i][col];
+                        //se acharmos um valor igual, percorremos a coluna novamente e zeramos os valores iguais
+                        //para zerar, usamos uma variavel que terá o valor a se buscar nas colunas
+                        //quando acharmos esses valores, zeramos-o na matriz e o apagamos da tabela
                         for (let k=0;k<3;k++){
                             if (jog[k][col] == valorComp){
                                 jog[k][col] = 0;
