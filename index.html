@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabalho Web</title>
     <link rel="stylesheet" href="style2.css">
+    <script type="module" src="main.js"></script>
 </head>
 <body>
 
@@ -26,55 +27,55 @@
 
         <section id="inicio">
 
-            <button onclick="Jog()">Jogar</button> <!--executa função de aleatorizar dado do player 1-->
+            <button id="jogDado">Jogar</button> <!--executa função de aleatorizar dado do player 1-->
         </section>
     </aside>
     <main>
 
-        <table class="tabela"> <!--tabela do segundo player-->
+        <table class="tabelabot"> <!--tabela do segundo player-->
 
             <tbody>
 
                 <tr>
 
-                    <td id="bot1x1" onclick="valorBot('bot1x1', botAux)"> <!--executa definicao e ciclo de jogo na tabela de cima-->
+                    <td id="bot1x1"> <!--executa definicao e ciclo de jogo na tabela de cima-->
 
                     </td>
-                    <td id="bot1x2" onclick="valorBot('bot1x2', botAux)"> <!--ou seja, a tabela do segundo player-->
+                    <td id="bot1x2"> <!--ou seja, a tabela do segundo player-->
 
                     </td>
-                    <td id="bot1x3" onclick="valorBot('bot1x3', botAux)">
+                    <td id="bot1x3">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="bot2x1" onclick="valorBot('bot2x1', botAux)">
+                    <td id="bot2x1">
 
                     </td>
-                    <td id="bot2x2" onclick="valorBot('bot2x2', botAux)">
+                    <td id="bot2x2">
 
                     </td>
-                    <td id="bot2x3" onclick="valorBot('bot2x3', botAux)">
+                    <td id="bot2x3">
                         
                     </td>
                 </tr>
                 <tr>
 
-                    <td id="bot3x1" onclick="valorBot('bot3x1', botAux)">
+                    <td id="bot3x1">
 
                     </td>
-                    <td id="bot3x2" onclick="valorBot('bot3x2', botAux)">
+                    <td id="bot3x2">
 
                     </td>
-                    <td id="bot3x3" onclick="valorBot('bot3x3', botAux)">
+                    <td id="bot3x3">
 
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <table class="tabela">  <!--tabela do primeiro player-->
+        <table class="tabelajog">  <!--tabela do primeiro player-->
 
             <tbody>
 
@@ -132,84 +133,8 @@
 
         <section id="fim">
 
-            <button onclick="Bot()">Jogar</button> <!--executa função de aleatorizar dado do player 2-->
+            <button id="botDado">Jogar</button> <!--executa função de aleatorizar dado do player 2-->
         </section>
-    </aside>
-
-    <script>
-        //define as matrizes que vao guardar os valores dos dados
-        let bot = [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
-        ]
-
-
-        let jog = [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
-        ]
-        //define as variaveis que vao guardar os valores dos dados
-        let botAux = 0;
-        let jogAux = 0;
-        //define as variaveis que vao guardar os pontos dos jogadores
-        let pontoJog = 0;
-        let pontoJog1 = 0;
-        let pontoJog2 = 0;
-        let pontoJog3 = 0;
-        let pontoBot = 0;
-        let pontoBot1 = 0;
-        let pontoBot2 = 0;
-        let pontoBot3 = 0;
-
-        function Jog() { //funcao que define o valor do dado do player 1 aleatoriamente entre 1 e 6
-            jogAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('jog1').innerText = jogAux
-        }
-
-        function Bot() { //funcao que define o valor do dado do player 2 aleatoriamente entre 1 e 6
-            botAux = Math.floor(Math.random() * 6) + 1;
-            document.getElementById('bot1').innerText = botAux
-        }
-
-        function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
-            //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
-            let linha = id.charAt(3);
-            let coluna = id.charAt(5);
-            if (bot[linha - 1][coluna - 1] == 0) {
-                bot[linha - 1][coluna - 1] = dado;
-            } else {
-                return 0;
-            }
-            document.getElementById(id).innerText = dado; //define o valor na tabela
-            zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
-            Bot(); //aleatoriza o proximo dado
-            CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
-            ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
-        }
-
-        function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
-            //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
-            let linha = id.charAt(3);
-            let coluna = id.charAt(5);
-            if (jog[linha - 1][coluna - 1] == 0) {
-                jog[linha - 1][coluna - 1] = dado;
-            } else {
-                return 0;
-            }
-            document.getElementById(id).innerText = dado; //define o valor na tabela
-            zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
-            Jog(); //aleatoriza o proximo dado
-            CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
-            ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
-        }
-
-
-
-            
-
-    </script>
-    
+    </aside>    
 </body>
 </html>

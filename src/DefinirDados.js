@@ -128,4 +128,4 @@ function zerarIguais(col,tipo){
         }
     }
 }
-export {CalcPontosJog, CalcPontosBot, ganhaJog, jogPontVerif, zerarIguais};
+export { zerarIguais, CalcPontosJog, CalcPontosBot, ganhaJog };
