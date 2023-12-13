@@ -60,6 +60,7 @@ function pontosBot(col){
     let idPreencher = 'br' + (col+1);
     document.getElementById(idPreencher).innerText = pontoBotCol; // define a pontuação na coluna correta
     return pontoBotCol; // retorna a pontuação da coluna calculada
+}
 
 function ganhaJog() {
     //faz a contagem de quantos itens estão na tabela
@@ -81,6 +82,7 @@ function ganhaJog() {
             jogPontVerif();
         }, 500);
     }
+}
 
 function jogPontVerif() {
     //verifica quem ganhou e avisa na tela
