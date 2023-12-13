@@ -173,7 +173,7 @@
             document.getElementById('bot1').innerText = botAux
         }
 
-        function valorBot(id, dado) { //ciclo de jogo em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
+        function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
             //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
             let linha = id.charAt(3);
             let coluna = id.charAt(5);
@@ -189,7 +189,7 @@
             ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
         }
 
-        function valorJog(id, dado) { //ciclo de jogo em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
+        function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
             //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
             let linha = id.charAt(3);
             let coluna = id.charAt(5);
@@ -316,11 +316,7 @@
                         for (let k=0;k<3;k++){
                             if (jog[k][col] == valorComp){
                                 //aqui ele verifica o tipo e elimina apenas a coluna do oponente;
-                                if (tipo===jog)
-                                {
-                                    jog[k][col]=valorComp;
-                                }
-                                else
+                                if (tipo===bot)
                                 {
                                     jog[k][col] = 0;
                                     let idJogApagar = 'jog'+(k+1)+'x'+(col+1);
@@ -329,11 +325,7 @@
                             }
                             if (bot[k][col] == valorComp){
                                 //aqui ele verifica o tipo e elimina apenas a coluna do oponente;
-                                if (tipo===bot)
-                                {
-                                    bot[k][col]=valorComp;
-                                }
-                                else
+                                if (tipo===jog)
                                 {
                                     bot[k][col] = 0;
                                     let idBotApagar = 'bot'+(k+1)+'x'+(col+1);
