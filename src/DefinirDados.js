@@ -44,7 +44,7 @@ function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor n
         return 0;
     }
     document.getElementById(id).innerText = dado; //define o valor na tabela
-    //zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
+    zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
     Bot(); //aleatoriza o proximo dado
     CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
     ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
@@ -59,7 +59,7 @@ function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor n
         return 0;
     }
     document.getElementById(id).innerText = dado; //define o valor na tabela
-    //zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
+    zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
     Jog(); //aleatoriza o proximo dado
     CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
     ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
@@ -166,7 +166,7 @@ function zerarIguais(col,tipo){
     for (let i=0;i<3;i++){
         for (let j=0;j<3;j++){
             if (jog[i][col] !== 0 && (jog[i][col] == bot[j][col])){
-                valorComp = jog[i][col];
+                let valorComp = jog[i][col];
                 //se acharmos um valor igual, percorremos a coluna novamente e zeramos os valores iguais
                 //para zerar, usamos uma variavel que terá o valor a se buscar nas colunas
                 //quando acharmos esses valores, zeramos-o na matriz e o apagamos da tabela
