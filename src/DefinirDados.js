@@ -18,20 +18,6 @@ let pontoBot = [0,0,0,0];
 
 
 //funcoes de ciclo de jogo
-function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
-    //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
-    let linha = id.charAt(3);
-    let coluna = id.charAt(5);
-    if (bot[linha - 1][coluna - 1] == 0) {
-        bot[linha - 1][coluna - 1] = dado;
-    } else {
-        return 0;
-    }
-    document.getElementById(id).innerText = dado; //define o valor na tabela
-    zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
-    CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
-    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou e retorna se o jogo acabou
-}
 function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
     //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
     let linha = id.charAt(3);
@@ -46,6 +32,22 @@ function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor n
     CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
     return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou e retorna se o jogo acabou
 }
+
+function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
+    //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
+    let linha = id.charAt(3);
+    let coluna = id.charAt(5);
+    if (bot[linha - 1][coluna - 1] == 0) {
+        bot[linha - 1][coluna - 1] = dado;
+    } else {
+        return 0;
+    }
+    document.getElementById(id).innerText = dado; //define o valor na tabela
+    zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
+    CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
+    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou e retorna se o jogo acabou
+}
+
 
 //funcoes para calcular a pontuacao do jogo
 function CalcPontosJog() //calcula todas as pontuações do primeiro jogador
