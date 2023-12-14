@@ -1,3 +1,4 @@
+
 //define as matrizes que vao guardar os valores dos dados
 let bot = [
     [0, 0, 0],
@@ -9,14 +10,14 @@ let jog = [
     [0, 0, 0],
     [0, 0, 0]
 ]
+
 //define as variaveis que vao guardar os pontos dos jogadores
 let pontoJog = [0,0,0,0];
 let pontoBot = [0,0,0,0];
 
 
-////
+
 //funcoes de ciclo de jogo
-////
 function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
     //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
     let linha = id.charAt(3);
@@ -29,7 +30,7 @@ function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor n
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
     CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
-    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
+    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou e retorna se o jogo acabou
 }
 function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
     //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
@@ -43,11 +44,10 @@ function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor n
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
     CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
-    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
+    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou e retorna se o jogo acabou
 }
-////
+
 //funcoes para calcular a pontuacao do jogo
-////
 function CalcPontosJog() //calcula todas as pontuações do primeiro jogador
 {
     pontoJog[3]=0; //zera a pontuação total do jogador para que não haja erros no calculo total
@@ -111,9 +111,8 @@ function pontosBot(col){
     document.getElementById(idPreencher).innerText = pontoBotCol; // define a pontuação na coluna correta
     return pontoBotCol; // retorna a pontuação da coluna calculada
 }
-////
+
 //funcao para zerar itens em colunas que sejam iguais ao do oponente
-////
 function zerarIguais(col,tipo){
     //percorre e busca se há valores iguais em uma coluna (valores diferentes de 0)
     for (let i=0;i<3;i++){
@@ -147,9 +146,8 @@ function zerarIguais(col,tipo){
         }
     }
 }
-////
+
 //funcoes de finalizacao do jogo
-////
 function ganhaJog() {
     //faz a contagem de quantos itens estão na tabela
     let contJog = 0;
@@ -169,10 +167,10 @@ function ganhaJog() {
         setTimeout(function() { // aqui há um delay para que a página atualize as pontuações antes de verificar quem ganhou
             jogPontVerif();
         }, 500);
-        return true;
+        return true; //retorna true se o jogo acabou
     }
     else{
-        return false;
+        return false; //retorna false se o jogo não acabou
     }
 }
 
