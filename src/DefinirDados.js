@@ -29,7 +29,7 @@ function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor n
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
     CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
-    ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
+    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
 }
 function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor na tabela do p1 e sao executadas as funções do ciclo
     //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
@@ -43,7 +43,7 @@ function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor n
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
     CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
-    ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
+    return ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
 }
 ////
 //funcoes para calcular a pontuacao do jogo
@@ -169,6 +169,10 @@ function ganhaJog() {
         setTimeout(function() { // aqui há um delay para que a página atualize as pontuações antes de verificar quem ganhou
             jogPontVerif();
         }, 500);
+        return true;
+    }
+    else{
+        return false;
     }
 }
 

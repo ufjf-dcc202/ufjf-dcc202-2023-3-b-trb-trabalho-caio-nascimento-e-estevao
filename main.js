@@ -3,6 +3,9 @@ import { valorBot, valorJog } from './src/DefinirDados.js';
 //fazendo com que o jogo comece com o primeiro player
 let botJogou = true;
 let jogJogou = false;
+let acabou = false;
+
+//cria variaveis usadas pelos dados
 let dadoJog = 0;
 let dadoBot = 0;
 
@@ -39,9 +42,9 @@ function JogarDadoBot(){
 //essas funcoes verificam qual jogador deve jogar
 //assim o ciclo deve ser sempre seguido, impedindo que um player jogue duas vezes diretamente
 function cicloBot(id,dado){
-    if (!botJogou) //verifica se a ultima jogada foi do segundo player
+    if (!botJogou && !acabou) //verifica se a ultima jogada foi do segundo player
     {
-        valorBot(id,dado); //executa o ciclo de definicoes e calculos do segundo player
+        acabou = valorBot(id,dado); //executa o ciclo de definicoes e calculos do segundo player
         JogarDadoBot(); //joga o dado do segundo player
         botJogou = true; //define que o segundo player jogou
         jogJogou = false; //define que o primeiro player nao jogou
@@ -52,9 +55,9 @@ function cicloBot(id,dado){
 }
 
 function cicloJog(id,dado){
-    if (!jogJogou) //verifica se a ultima jogada foi do primeiro player
+    if (!jogJogou && !acabou) //verifica se a ultima jogada foi do primeiro player
     {
-        valorJog(id,dado); //executa o ciclo de definicoes e calculos do primeiro player
+        acabou = valorJog(id,dado); //executa o ciclo de definicoes e calculos do primeiro player
         JogarDadoJog(); //joga o dado do primeiro player
         jogJogou = true; //define que o primeiro player jogou
         botJogou = false; //define que o segundo player nao jogou
