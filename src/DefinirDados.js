@@ -9,30 +9,9 @@ let jog = [
     [0, 0, 0],
     [0, 0, 0]
 ]
-//define as variaveis que vao guardar os valores dos dados
-let botAux = 0;
-let jogAux = 0;
 //define as variaveis que vao guardar os pontos dos jogadores
-let pontoJog = 0;
-let pontoJog1 = 0;
-let pontoJog2 = 0;
-let pontoJog3 = 0;
-let pontoBot = 0;
-let pontoBot1 = 0;
-let pontoBot2 = 0;
-let pontoBot3 = 0;
-
-function Jog() { //funcao que define o valor do dado do player 1 aleatoriamente entre 1 e 6
-    jogAux = Math.floor(Math.random() * 6) + 1;
-    document.getElementById('jog1').innerText = jogAux
-    return jogAux;
-}
-function Bot() { //funcao que define o valor do dado do player 2 aleatoriamente entre 1 e 6
-    botAux = Math.floor(Math.random() * 6) + 1;
-    document.getElementById('bot1').innerText = botAux
-    return botAux;
-}
-
+let pontoJog = [0,0,0,0];
+let pontoBot = [0,0,0,0];
 
 function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor na tabela do p2 e sao executadas as funções do ciclo
     //primeiramente define-se na tabela se obtendo a posição pelo ID e verificando se não há itens na posição desejada
@@ -45,7 +24,6 @@ function valorBot(id, dado) { //ciclo de jogo do p2 em que é definido o valor n
     }
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,bot); //verifica se ha itens para ser zerados 
-    Bot(); //aleatoriza o proximo dado
     CalcPontosBot(); //calcula os pontos do player 2 e os atualiza
     ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
 }
@@ -60,18 +38,18 @@ function valorJog(id, dado) { //ciclo de jogo do p1 em que é definido o valor n
     }
     document.getElementById(id).innerText = dado; //define o valor na tabela
     zerarIguais(coluna-1,jog); //verifica se ha itens para ser zerados
-    Jog(); //aleatoriza o proximo dado
     CalcPontosJog(); //calcula os pontos do player 2 e os atualiza
     ganhaJog(); //verifica se o jogo acabou e avisa quem ganhou
 }
 function CalcPontosJog()
 {
     //calcula os pontos de cada coluna do jogador 1 e os atualiza
-    pontoJog1=pontosJog(0); 
-    pontoJog2=pontosJog(1);
-    pontoJog3=pontosJog(2);
-    pontoJog=pontoJog1+pontoJog2+pontoJog3; //calcula a pontuação total do jogador 1 e as atualiza
-    document.getElementById('totalJog').innerText = pontoJog;
+    pontoJog[3]=0;
+    for (let i=0;i<3;i++){
+        pontoJog[i]=pontosJog(i);
+        pontoJog[3]+=pontoJog[i];
+    }
+    document.getElementById('totalJog').innerText = pontoJog[3];
 }
 
 function pontosJog(col){
@@ -99,11 +77,12 @@ function pontosJog(col){
 function CalcPontosBot()
 {
     //calcula os pontos de cada coluna do jogador 2 e os atualiza
-    pontoBot1=pontosBot(0);
-    pontoBot2=pontosBot(1);
-    pontoBot3=pontosBot(2);
-    pontoBot=pontoBot1+pontoBot2+pontoBot3; //calcula a pontuação total do jogador 2 e as atualiza  
-    document.getElementById('totalBot').innerText = pontoBot;
+    pontoBot[3]=0;
+    for (let i=0;i<3;i++){
+        pontoBot[i]=pontosBot(i);
+        pontoBot[3]+=pontoBot[i];
+    } 
+    document.getElementById('totalBot').innerText = pontoBot[3];
 }
 
 function pontosBot(col){
@@ -152,9 +131,9 @@ function ganhaJog() {
 
 function jogPontVerif() {
     //verifica quem ganhou e avisa na tela
-    if (pontoJog > pontoBot) {
+    if (pontoJog[3] > pontoBot[3]) {
         alert("Jogador 1 Ganhou");
-    } else if (pontoJog < pontoBot) {
+    } else if (pontoJog[3] < pontoBot[3]) {
         alert("Jogador 2 Ganhou");
     } else {
         alert("Empate");
@@ -194,4 +173,4 @@ function zerarIguais(col,tipo){
         }
     }
 }
-export { Jog, Bot, valorBot, valorJog };
+export {valorBot, valorJog };
