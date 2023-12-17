@@ -9,11 +9,8 @@ let acabou = false;
 let dadoJog = 0;
 let dadoBot = 0;
 
-//define botoes de jogar dado e o seu clique
-const btnJogDado = document.getElementById('jogDado');
-btnJogDado.addEventListener('click',JogarDadoJog);
-const btnBotDado = document.getElementById('botDado');
-btnBotDado.addEventListener('click',JogarDadoBot);
+JogarDadoJog(); //joga o dado do primeiro player no inicio do jogo
+JogarDadoBot(); //joga o dado do segundo player no inicio do jogo
 
 //define os itens da tabela e seus cliques
 const botoesBot = document.querySelectorAll(".tabelabot td")
