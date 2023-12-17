@@ -9,8 +9,9 @@ let acabou = false;
 let dadoJog = 0;
 let dadoBot = 0;
 
-JogarDadoJog(); //joga o dado do primeiro player no inicio do jogo
-JogarDadoBot(); //joga o dado do segundo player no inicio do jogo
+//joga os dados no inicio do jogo
+JogarDadoJog(); 
+JogarDadoBot(); 
 
 //define os itens da tabela e seus cliques
 const botoesBot = document.querySelectorAll(".tabelabot td")
